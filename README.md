@@ -1,6 +1,10 @@
 # Marvel Universe Explorer
 
-Marvel API Explorer is a web-based project that allows users to explore information about Marvel characters, comics, and creators. This project uses HTML, CSS, and JavaScript to display data retrieved from the Marvel API. Users can navigate between different sections to view details on popular Marvel characters, comic issues, and notable creators.
+Marvel Universe Explorer is a web-based project that allows users to explore information about Marvel characters, comics, and creators. This project uses HTML, CSS, and JavaScript to display data retrieved from the Marvel API. Users can navigate between different sections to view details on popular Marvel characters, comic issues, and notable creators.
+
+## Inspiration
+
+When I was little, I find myself drawn into the Marvel Universe—a world of heroes, villains, and incredible stories that sparked my imagination. Creating the Marvel Universe Explorer site is my way of sharing that excitement, letting others dive into these iconic characters and their stories.
 
 ## Project Structure
 
