@@ -1,114 +1,145 @@
-// Base URL for Marvel API
+// Marvel API base URL and keys
 const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
-// Public and Private API Keys
-const PUBLIC_KEY = ''; // Replace with your actual public key
-const PRIVATE_KEY = ''; // Replace with your actual private key
+const PUBLIC_KEY = '';
+const PRIVATE_KEY = '';
+
+// Ensure the DOM is fully loaded before adding event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    addNavigationEventListeners();
+});
+
+// Add navigation event listeners for main categories
+function addNavigationEventListeners() {
+    document.getElementById('characters-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchCharacters();
+    });
+    document.getElementById('comics-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchComics();
+    });
+    document.getElementById('creators-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchCreators();
+    });
+    document.getElementById('events-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchEvents();
+    });
+    document.getElementById('series-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchSeries();
+    });
+    document.getElementById('stories-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchStories();
+    });
+}
+
+// Utility function to generate hash for API requests
+function generateHash() {
+    const ts = new Date().getTime();
+    return {
+        ts,
+        hash: md5(ts + PRIVATE_KEY + PUBLIC_KEY),
+    };
+}
 
 // Fetch and display characters
 async function fetchCharacters() {
-    const ts = new Date().getTime();
-    const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY); // Use md5 function from js-md5
-
+    const { ts, hash } = generateHash();
     try {
         const response = await fetch(`${API_BASE_URL}characters?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
-        displayCharacters(data.data.results);
+        displayItems(data.data.results, 'character');
     } catch (error) {
         console.error("Error fetching characters:", error);
     }
 }
 
-function displayCharacters(characters) {
-    const content = document.getElementById('content');
-    content.innerHTML = ''; // Clear existing content
-
-    characters.forEach(character => {
-        const characterCard = document.createElement('div');
-        characterCard.className = 'character-card';
-        characterCard.innerHTML = `
-            <img src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
-            <h2>${character.name}</h2>
-            <p>${character.description || 'No description available.'}</p>
-        `;
-        content.appendChild(characterCard);
-    });
-}
-
 // Fetch and display comics
 async function fetchComics() {
-    const ts = new Date().getTime();
-    const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY);
-
+    const { ts, hash } = generateHash();
     try {
         const response = await fetch(`${API_BASE_URL}comics?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
-        displayComics(data.data.results);
+        displayItems(data.data.results, 'comic');
     } catch (error) {
         console.error("Error fetching comics:", error);
     }
 }
 
-function displayComics(comics) {
-    const content = document.getElementById('content');
-    content.innerHTML = ''; // Clear existing content
-
-    comics.forEach(comic => {
-        const comicCard = document.createElement('div');
-        comicCard.className = 'comic-card';
-        comicCard.innerHTML = `
-            <img src="${comic.thumbnail.path}.${comic.thumbnail.extension}" alt="${comic.title}">
-            <h2>${comic.title}</h2>
-            <p>${comic.description || 'No description available.'}</p>
-        `;
-        content.appendChild(comicCard);
-    });
-}
-
 // Fetch and display creators
 async function fetchCreators() {
-    const ts = new Date().getTime();
-    const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY);
-
+    const { ts, hash } = generateHash();
     try {
         const response = await fetch(`${API_BASE_URL}creators?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
-        displayCreators(data.data.results);
+        displayItems(data.data.results, 'creator');
     } catch (error) {
         console.error("Error fetching creators:", error);
     }
 }
 
-function displayCreators(creators) {
+// Fetch and display events
+async function fetchEvents() {
+    const { ts, hash } = generateHash();
+    try {
+        const response = await fetch(`${API_BASE_URL}events?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        displayItems(data.data.results, 'event');
+    } catch (error) {
+        console.error("Error fetching events:", error);
+    }
+}
+
+// Fetch and display series
+async function fetchSeries() {
+    const { ts, hash } = generateHash();
+    try {
+        const response = await fetch(`${API_BASE_URL}series?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        displayItems(data.data.results, 'series');
+    } catch (error) {
+        console.error("Error fetching series:", error);
+    }
+}
+
+// Fetch and display stories
+async function fetchStories() {
+    const { ts, hash } = generateHash();
+    try {
+        const response = await fetch(`${API_BASE_URL}stories?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        displayItems(data.data.results, 'story');
+    } catch (error) {
+        console.error("Error fetching stories:", error);
+    }
+}
+
+// Function to display fetched items in the main content area
+function displayItems(items, type) {
     const content = document.getElementById('content');
     content.innerHTML = ''; // Clear existing content
 
-    creators.forEach(creator => {
-        const creatorCard = document.createElement('div');
-        creatorCard.className = 'creator-card';
-        creatorCard.innerHTML = `
-            <h2>${creator.fullName}</h2>
-            <p>Role: ${creator.role || 'Unknown role'}</p>
-            <p>${creator.description || 'No description available.'}</p>
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `${type}-card`;
+        card.innerHTML = `
+            <h2>${item.name || item.title || 'No Title Available'}</h2>
+            <p>${item.description || 'No description available.'}</p>
         `;
-        content.appendChild(creatorCard);
+
+        if (item.thumbnail) {
+            card.innerHTML = `<img src="${item.thumbnail.path}.${item.thumbnail.extension}" alt="${item.name || item.title}">` + card.innerHTML;
+        }
+
+        content.appendChild(card);
     });
 }
-
-// Add event listeners for each link
-document.getElementById('characters-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    fetchCharacters();
-});
-
-document.getElementById('comics-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    fetchComics();
-});
-
-document.getElementById('creators-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    fetchCreators();
-});
