@@ -1,69 +1,114 @@
 // Base URL for Marvel API
 const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
 // Public and Private API Keys
-const PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your actual public key
-const PRIVATE_KEY = 'YOUR_PRIVATE_KEY'; // Replace with your actual private key
+const PUBLIC_KEY = ''; // Replace with your actual public key
+const PRIVATE_KEY = ''; // Replace with your actual private key
 
-/**
- * Function to fetch character data from Marvel API.
- * This function generates a hash required for Marvel API authentication and makes a GET request to fetch characters.
- */
+// Fetch and display characters
 async function fetchCharacters() {
-    // Get the current timestamp in milliseconds
     const ts = new Date().getTime();
-    // Generate MD5 hash using timestamp, private key, and public key (using js-md5 library or another method)
-    const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY); 
+    const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY); // Use md5 function from js-md5
 
     try {
-        // Make the GET request to Marvel API for character data
         const response = await fetch(`${API_BASE_URL}characters?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        
-        // Check if the response is not successful
-        if (!response.ok) {
-            // Throw an error if response status is not in 200-299 range
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        // Parse the response data as JSON
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
-        // Pass the character data to display function
         displayCharacters(data.data.results);
     } catch (error) {
-        // Log any errors that occur during the fetch operation
         console.error("Error fetching characters:", error);
     }
 }
 
-/**
- * Function to display character data on the page.
- * This function creates HTML elements for each character and appends them to the main content area.
- * @param {Array} characters - Array of character objects from Marvel API.
- */
 function displayCharacters(characters) {
-    // Get the main content area where characters will be displayed
     const content = document.getElementById('content');
-    // Clear any existing content
-    content.innerHTML = '';
+    content.innerHTML = ''; // Clear existing content
 
-    // Loop through each character and create a card with character information
     characters.forEach(character => {
-        // Create a div element for each character card
         const characterCard = document.createElement('div');
         characterCard.className = 'character-card';
-        // Set the inner HTML of the character card with character image, name, and description
         characterCard.innerHTML = `
             <img src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
             <h2>${character.name}</h2>
             <p>${character.description || 'No description available.'}</p>
         `;
-        // Append the character card to the content area
         content.appendChild(characterCard);
     });
 }
 
-// Add event listener to "Characters" link
-// When the link is clicked, it prevents the default link action and calls fetchCharacters function
+// Fetch and display comics
+async function fetchComics() {
+    const ts = new Date().getTime();
+    const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY);
+
+    try {
+        const response = await fetch(`${API_BASE_URL}comics?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        displayComics(data.data.results);
+    } catch (error) {
+        console.error("Error fetching comics:", error);
+    }
+}
+
+function displayComics(comics) {
+    const content = document.getElementById('content');
+    content.innerHTML = ''; // Clear existing content
+
+    comics.forEach(comic => {
+        const comicCard = document.createElement('div');
+        comicCard.className = 'comic-card';
+        comicCard.innerHTML = `
+            <img src="${comic.thumbnail.path}.${comic.thumbnail.extension}" alt="${comic.title}">
+            <h2>${comic.title}</h2>
+            <p>${comic.description || 'No description available.'}</p>
+        `;
+        content.appendChild(comicCard);
+    });
+}
+
+// Fetch and display creators
+async function fetchCreators() {
+    const ts = new Date().getTime();
+    const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY);
+
+    try {
+        const response = await fetch(`${API_BASE_URL}creators?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        displayCreators(data.data.results);
+    } catch (error) {
+        console.error("Error fetching creators:", error);
+    }
+}
+
+function displayCreators(creators) {
+    const content = document.getElementById('content');
+    content.innerHTML = ''; // Clear existing content
+
+    creators.forEach(creator => {
+        const creatorCard = document.createElement('div');
+        creatorCard.className = 'creator-card';
+        creatorCard.innerHTML = `
+            <h2>${creator.fullName}</h2>
+            <p>Role: ${creator.role || 'Unknown role'}</p>
+            <p>${creator.description || 'No description available.'}</p>
+        `;
+        content.appendChild(creatorCard);
+    });
+}
+
+// Add event listeners for each link
 document.getElementById('characters-link').addEventListener('click', (e) => {
     e.preventDefault();
     fetchCharacters();
+});
+
+document.getElementById('comics-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    fetchComics();
+});
+
+document.getElementById('creators-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    fetchCreators();
 });
