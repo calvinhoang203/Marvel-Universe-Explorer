@@ -1,7 +1,7 @@
 // Marvel API base URL and keys
 const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
-const PUBLIC_KEY = '';
-const PRIVATE_KEY = '';
+const PUBLIC_KEY = '019a01428557678a2bcee4e136a0a229';
+const PRIVATE_KEY = '5eca07b6a7f8426a8b4ca6c30fef39b42f951957';
 
 // Ensure the DOM is fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,13 +36,14 @@ function addNavigationEventListeners() {
     });
 }
 
+console.log("CryptoJS:", CryptoJS); // Check if CryptoJS is defined
+
 // Utility function to generate hash for API requests
 function generateHash() {
     const ts = new Date().getTime();
-    return {
-        ts,
-        hash: md5(ts + PRIVATE_KEY + PUBLIC_KEY),
-    };
+    const hash = CryptoJS.MD5(ts + PRIVATE_KEY + PUBLIC_KEY).toString(); // Use CryptoJS.MD5 for hashing
+    console.log("Hash generated:", hash); // Log hash for debugging
+    return { ts, hash };
 }
 
 // Fetch and display characters
@@ -57,6 +58,7 @@ async function fetchCharacters() {
         console.error("Error fetching characters:", error);
     }
 }
+
 
 // Fetch and display comics
 async function fetchComics() {
