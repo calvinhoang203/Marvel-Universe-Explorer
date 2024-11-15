@@ -1,26 +1,37 @@
 /* css/cards.css */
 
-.character-card, .comic-card, .creator-card {
-    margin: 20px;
-    padding: 10px;
+.character-card {
+    margin: 20px auto;
+    padding: 15px;
     border: 1px solid #ddd;
     text-align: center;
-    display: inline-block;
-    width: 200px;
+    width: 60%;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.character-card img, .comic-card img, .creator-card img {
-    width: 150px;
+.character-card img {
+    width: 200px;
     height: auto;
+    margin-bottom: 15px;
+}
+
+.character-card h2 {
+    font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-.character-card h2, .comic-card h2, .creator-card h2 {
-    font-size: 1.2em;
-    margin: 0.5em 0;
+.character-card p {
+    font-size: 1em;
+    color: #555;
 }
 
-.character-card p, .comic-card p, .creator-card p {
-    font-size: 0.9em;
-    color: #555;
+.character-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.character-card ul li {
+    margin: 5px 0;
 }
