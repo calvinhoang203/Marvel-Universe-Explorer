@@ -6,25 +6,80 @@
     <title>Marvel Universe Explorer</title>
     <!-- Include stylesheets -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cards.css">
     <!-- Include CryptoJS for MD5 hashing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" />
+    <style>
+        /* Custom styles for layout */
+        header {
+            text-align: center;
+            background-color: #20232a;
+            color: #61dafb;
+            padding: 20px 0;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #61dafb;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #content {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .card {
+            flex: 1 1 30%;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card h3, .card h4, .card p {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Welcome to the Marvel Universe Explorer</h1>
         <nav>
             <a href="#" id="home-link">Home</a>
-            <a href="#" id="characters-link">Characters</a>
-            <a href="#" id="comics-link">Comics</a>
-            <a href="#" id="creators-link">Creators</a>
+            <a href="#" id="characters-link">Marvel Characters Gallery</a>
+            <a href="#" id="comics-link">Marvel Comics</a>
         </nav>
     </header>
     
     <main id="content">
-        <p>Explore Marvel's vast universe.</p>
+        <!-- The content will be dynamically loaded by script.js -->
     </main>
 
     <!-- Load your custom JavaScript after the content -->

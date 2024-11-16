@@ -3,145 +3,164 @@ const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
 const PUBLIC_KEY = '019a01428557678a2bcee4e136a0a229';
 const PRIVATE_KEY = '5eca07b6a7f8426a8b4ca6c30fef39b42f951957';
 
-// Ensure the DOM is fully loaded before adding event listeners
-document.addEventListener('DOMContentLoaded', () => {
-    addNavigationEventListeners();
-});
-
-// Add navigation event listeners for main categories
-function addNavigationEventListeners() {
-    document.getElementById('characters-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchCharacters();
-    });
-    document.getElementById('comics-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchComics();
-    });
-    document.getElementById('creators-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchCreators();
-    });
-    document.getElementById('events-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchEvents();
-    });
-    document.getElementById('series-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchSeries();
-    });
-    document.getElementById('stories-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchStories();
-    });
+// Check if the keys are valid
+if (!PUBLIC_KEY || !PRIVATE_KEY) {
+    console.error("Error: PUBLIC_KEY or PRIVATE_KEY is missing. Please add your API keys.");
 }
 
-console.log("CryptoJS:", CryptoJS); // Check if CryptoJS is defined
+// Ensure the DOM is fully loaded before adding event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof CryptoJS === 'undefined') {
+        console.error("Error: CryptoJS library is not loaded. Please ensure it's included in your project.");
+        return;
+    }
+    addNavigationEventListeners();
+    fetchCharacterOfTheDay(); // Display the default "Home" content
+});
+
+// Add navigation event listeners for Home, Characters, and Comics
+function addNavigationEventListeners() {
+    const links = [
+        { id: 'home-link', action: fetchCharacterOfTheDay },
+        { id: 'characters-link', action: fetchCharacters },
+        { id: 'comics-link', action: fetchComics },
+    ];
+
+    links.forEach(link => {
+        const element = document.getElementById(link.id);
+        if (element) {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                link.action();
+            });
+        } else {
+            console.warn(`Warning: Element with ID "${link.id}" not found.`);
+        }
+    });
+}
 
 // Utility function to generate hash for API requests
 function generateHash() {
     const ts = new Date().getTime();
-    const hash = CryptoJS.MD5(ts + PRIVATE_KEY + PUBLIC_KEY).toString(); // Use CryptoJS.MD5 for hashing
-    console.log("Hash generated:", hash); // Log hash for debugging
+    const hash = CryptoJS.MD5(ts + PRIVATE_KEY + PUBLIC_KEY).toString();
     return { ts, hash };
 }
 
-// Fetch and display characters
+// Function to fetch and display the Marvel Character of the Day
+async function fetchCharacterOfTheDay() {
+    const { ts, hash } = generateHash();
+    const url = `${API_BASE_URL}characters?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&limit=1&offset=${Math.floor(Math.random() * 100)}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        const character = data.data.results[0];
+        displayCharacterOfTheDay(character);
+    } catch (error) {
+        console.error("Error fetching Character of the Day:", error.message);
+    }
+}
+
+// Function to display the Character of the Day
+function displayCharacterOfTheDay(character) {
+    const content = document.getElementById('content');
+    if (!content) {
+        console.error("Error: Element with ID 'content' not found.");
+        return;
+    }
+
+    const imageUrl = character.thumbnail
+        ? `${character.thumbnail.path}.${character.thumbnail.extension}`
+        : 'https://via.placeholder.com/200x200?text=No+Image';
+
+    const description = character.description || "No description available.";
+
+    const comicsList = character.comics.items
+        .slice(0, 5)
+        .map(comic => `<li>${comic.name}</li>`)
+        .join("") || "<li>No comics available.</li>";
+
+    content.innerHTML = `
+        <h2>Marvel Character of the Day</h2>
+        <div class="character-card">
+            <img src="${imageUrl}" alt="${character.name}">
+            <h2>${character.name}</h2>
+            <p>${description}</p>
+            <h3>Comics:</h3>
+            <ul>${comicsList}</ul>
+        </div>
+    `;
+}
+
+// Fetch Marvel Characters for the Gallery
 async function fetchCharacters() {
     const { ts, hash } = generateHash();
+    const url = `${API_BASE_URL}characters?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&limit=9`;
+
     try {
-        const response = await fetch(`${API_BASE_URL}characters?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data = await response.json();
-        displayItems(data.data.results, 'character');
+        displayGallery(data.data.results, 'character');
     } catch (error) {
-        console.error("Error fetching characters:", error);
+        console.error("Error fetching characters:", error.message);
     }
 }
 
-
-// Fetch and display comics
+// Fetch Marvel Comics
 async function fetchComics() {
     const { ts, hash } = generateHash();
+    const url = `${API_BASE_URL}comics?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&limit=9`;
+
     try {
-        const response = await fetch(`${API_BASE_URL}comics?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data = await response.json();
-        displayItems(data.data.results, 'comic');
+        displayGallery(data.data.results, 'comic');
     } catch (error) {
-        console.error("Error fetching comics:", error);
+        console.error("Error fetching comics:", error.message);
     }
 }
 
-// Fetch and display creators
-async function fetchCreators() {
-    const { ts, hash } = generateHash();
-    try {
-        const response = await fetch(`${API_BASE_URL}creators?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        displayItems(data.data.results, 'creator');
-    } catch (error) {
-        console.error("Error fetching creators:", error);
-    }
-}
-
-// Fetch and display events
-async function fetchEvents() {
-    const { ts, hash } = generateHash();
-    try {
-        const response = await fetch(`${API_BASE_URL}events?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        displayItems(data.data.results, 'event');
-    } catch (error) {
-        console.error("Error fetching events:", error);
-    }
-}
-
-// Fetch and display series
-async function fetchSeries() {
-    const { ts, hash } = generateHash();
-    try {
-        const response = await fetch(`${API_BASE_URL}series?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        displayItems(data.data.results, 'series');
-    } catch (error) {
-        console.error("Error fetching series:", error);
-    }
-}
-
-// Fetch and display stories
-async function fetchStories() {
-    const { ts, hash } = generateHash();
-    try {
-        const response = await fetch(`${API_BASE_URL}stories?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        displayItems(data.data.results, 'story');
-    } catch (error) {
-        console.error("Error fetching stories:", error);
-    }
-}
-
-// Function to display fetched items in the main content area
-function displayItems(items, type) {
+// Function to display items in a grid gallery format
+function displayGallery(items, type) {
     const content = document.getElementById('content');
-    content.innerHTML = ''; // Clear existing content
+    if (!content) {
+        console.error("Error: Element with ID 'content' not found.");
+        return;
+    }
+
+    content.innerHTML = `<h2>${type === 'character' ? 'Marvel Characters Gallery' : 'Marvel Comics'}</h2>`;
+
+    const row = document.createElement('div');
+    row.className = 'row';
 
     items.forEach(item => {
         const card = document.createElement('div');
-        card.className = `${type}-card`;
+        card.className = 'card';
+
+        const imageUrl = item.thumbnail
+            ? `${item.thumbnail.path}.${item.thumbnail.extension}`
+            : 'https://via.placeholder.com/200x200?text=No+Image';
+
+        const description = item.description || "No description available.";
+
         card.innerHTML = `
-            <h2>${item.name || item.title || 'No Title Available'}</h2>
-            <p>${item.description || 'No description available.'}</p>
+            <img src="${imageUrl}" alt="${item.name || item.title}">
+            <h3>${item.name || item.title}</h3>
+            <p>${description}</p>
+            ${type === 'comic' ? `<p><strong>Creators:</strong> ${item.creators.items.map(creator => creator.name).join(', ') || 'Unknown'}</p>` : ''}
         `;
 
-        if (item.thumbnail) {
-            card.innerHTML = `<img src="${item.thumbnail.path}.${item.thumbnail.extension}" alt="${item.name || item.title}">` + card.innerHTML;
-        }
-
-        content.appendChild(card);
+        row.appendChild(card);
     });
+
+    content.appendChild(row);
 }
