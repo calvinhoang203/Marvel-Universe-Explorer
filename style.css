@@ -1,24 +1,152 @@
-.row {
+/* Reset default styles to avoid unwanted spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+header {
+    background-color: black;
+    color: white;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    align-items: center;
+    height: 80px; /* Adjust height if needed */
+    width: 100%;
+    position: relative;
+    z-index: 1000; /* Ensures it stays on top */
+    padding: 0 20px; /* Add horizontal padding for spacing */
 }
 
-.card {
-    flex: 1 1 30%;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
+/* Logo Styling */
+header img {
+    height: 60px; /* Adjust height as per the header dimensions */
+    max-height: 100%; /* Prevents overflow */
+}
+
+/* Navigation Styling */
+nav {
+    display: flex;
+    gap: 20px; /* Spacing between navigation links */
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover */
+    padding: 10px 15px;
+}
+
+nav a:hover {
+    background-color: #ff0000; /* Highlight effect */
+    color: white;
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+.topbar {
+    background-color: #111; /* Slightly darker shade for the top bar */
+    padding: 5px 0;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Welcome Section */
+.welcome {
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
 }
 
-.card img {
+.welcome h1 {
+    font-size: 2.5rem;
+    color: #20232a;
+}
+
+.welcome p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px auto;
+    max-width: 700px;
+}
+
+/* Character of the Day Section */
+.character-of-the-day {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.character-card img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.character-card h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #20232a;
+}
+
+.character-card p {
+    font-size: 1rem;
+    color: #333;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+.character-card h4 {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 15px;
+}
+
+/* Gallery Section */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gallery-item {
+    flex: 1 1 calc(20% - 10px); /* Adjust card size to fit more items */
+    max-width: 200px; /* Ensure cards have a maximum width */
+    margin: 5px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
     width: 100%;
     height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 
-.card h3, .card h4, .card p {
-    margin: 10px;
+.gallery-item h3 {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.gallery-item p {
+    font-size: 0.875rem;
+    color: #555;
+    margin: 5px 0;
+    line-height: 1.2;
+}
+
+/* Remove Bullet Points */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
