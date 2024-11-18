@@ -114,7 +114,11 @@ async function fetchCharactersGallery() {
 
         content.innerHTML = `<div class="gallery">
             ${characters.map(character => `
-                <div class="gallery-item">
+                <div 
+                    class="gallery-item" 
+                    onclick="window.open('${character.urls.length > 0 ? character.urls[0].url : '#'}', '_blank')"
+                    style="cursor: pointer;"
+                >
                     <img src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
                     <h3>${character.name}</h3>
                     <p>${character.description}</p>
@@ -129,13 +133,14 @@ async function fetchCharactersGallery() {
     }
 }
 
+
 // Fetch Comics Gallery
 async function fetchComicsGallery() {
     const content = document.getElementById('content');
     showLoading(); // Show loading overlay
 
     try {
-        const url = `${API_BASE_URL}comics?${generateAuthParams()}&limit=20`; // Adjust the limit as needed
+        const url = `${API_BASE_URL}comics?${generateAuthParams()}&limit=100`; // Adjust the limit as needed
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
 
