@@ -1,0 +1,48 @@
+/* Comics Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.gallery-item {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.gallery-item h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: white;
+}
+
+.gallery-item p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #dcdcdc;
+    line-height: 1.6;
+}
+
+.gallery-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

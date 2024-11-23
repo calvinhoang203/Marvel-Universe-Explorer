@@ -1,0 +1,59 @@
+/* Character of the Day Section */
+.character-of-the-day {
+    text-align: center;
+    margin: 30px auto; /* Center align vertically and horizontally */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent dark background */
+    border-radius: 12px; /* Rounded corners for aesthetic */
+    display: inline-block; /* Keeps it compact around the content */
+    max-width: 90%; /* Prevents it from stretching too wide */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Adds a subtle shadow for depth */
+    position: relative; /* Ensures it stays within the flow of the document */
+    left: 50%; /* Move it to the center horizontally */
+    transform: translateX(-50%); /* Correct the position by moving it back half its width */
+}
+
+/* Character Card */
+.character-card {
+    padding: 15px;
+}
+
+/* Character Card Image */
+.character-card img {
+    width: auto; /* Automatically adjust width */
+    height: 500px; /* Set a consistent height */
+    max-width: 100%; /* Ensure the image doesn’t exceed its container */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+    object-fit: cover; /* Ensures the image is cropped to fit the boundary */
+}
+
+/* Title Styling */
+.character-card h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Shadow for better readability */
+}
+
+/* Description Styling */
+.character-card p {
+    font-size: 1rem;
+    color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Shadow for readability */
+}
+
+/* Subheading Styling */
+.character-card h4 {
+    font-size: 1.2rem;
+    color: #fff9f9;
+    margin-top: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.character-card p {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}

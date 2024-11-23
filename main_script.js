@@ -1,3 +1,6 @@
+import { fetchCharactersGallery } from './characters/characters_script.js';
+import { fetchComicsGallery } from './comics/comics_script.js';
+
 // Marvel API base URL and keys
 const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
 const PUBLIC_KEY = '';
@@ -93,132 +96,16 @@ function fetchHomeContent() {
     fetchRandomCharacter();
 }
 
-// Fetch Characters Gallery
-async function fetchCharactersGallery() {
-    const content = document.getElementById('content');
-    showLoading(); // Show loading overlay
-
-    try {
-        const url = `${API_BASE_URL}characters?${generateAuthParams()}&limit=100`;
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-
-        const data = await response.json();
-        const characters = data.data.results.filter(character => character.description && character.description.trim() !== "");
-
-        if (characters.length === 0) {
-            content.innerHTML = `<div class="error">No characters with descriptions found. Try again later.</div>`;
-            hideLoading(); // Hide loading overlay
-            return;
-        }
-
-        content.innerHTML = `<div class="gallery">
-            ${characters.map(character => `
-                <div 
-                    class="gallery-item" 
-                    onclick="window.open('${character.urls.length > 0 ? character.urls[0].url : '#'}', '_blank')"
-                    style="cursor: pointer;"
-                >
-                    <img src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
-                    <h3>${character.name}</h3>
-                    <p>${character.description}</p>
-                </div>
-            `).join('')}
-        </div>`;
-    } catch (error) {
-        console.error('Error fetching characters gallery:', error);
-        content.innerHTML = `<div class="error">Failed to load content. Please try again later.</div>`;
-    } finally {
-        hideLoading(); // Ensure the loading overlay is hidden
-    }
-}
-
-
-// Fetch Comics Gallery
-async function fetchComicsGallery() {
-    const content = document.getElementById('content');
-    showLoading(); // Show loading overlay
-
-    try {
-        const url = `${API_BASE_URL}comics?${generateAuthParams()}&limit=100`; // Adjust the limit as needed
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-
-        const data = await response.json();
-        const comics = data.data.results.filter(comic => 
-            comic.thumbnail && 
-            comic.thumbnail.path && 
-            !comic.thumbnail.path.includes('image_not_available') && 
-            comic.creators.items.length > 0 &&
-            comic.prices.length > 0 && 
-            comic.prices[0].price > 0
-        );
-
-        if (comics.length === 0) {
-            content.innerHTML = `<div class="error">No comics with valid thumbnails, creators, or prices found. Try again later.</div>`;
-            hideLoading();
-            return;
-        }
-
-        // Render comics gallery
-        content.innerHTML = `
-            <div class="gallery">
-                ${comics.map(comic => `
-                    <div 
-                        class="gallery-item" 
-                        onclick="window.open('${comic.urls.length > 0 ? comic.urls[0].url : '#'}', '_blank')"
-                    >
-                        <img src="${comic.thumbnail.path}.${comic.thumbnail.extension}" alt="${comic.title}">
-                        <h3>${comic.title}</h3>
-                        <h4>Issue Number:</h4>
-                        <p>${comic.issueNumber || 'N/A'}</p>
-                        <h4>Creators:</h4>
-                        <p>${comic.creators.items.map(creator => `${creator.name} (${creator.role})`).join(', ')}</p>
-                        <h4>Stories:</h4>
-                        <ul>
-                            ${comic.stories.items.length > 0
-                                ? comic.stories.items.map(story => `
-                                    <li>
-                                        <strong>${story.name}</strong>
-                                        <br><em>Type:</em> ${story.type || 'Unknown'}
-                                    </li>
-                                  `).join('')
-                                : '<li>No stories available.</li>'}
-                        </ul>
-                        <h4>Price:</h4>
-                        <p>$${comic.prices[0].price.toFixed(2)}</p>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    } catch (error) {
-        console.error('Error fetching comics gallery:', error);
-        content.innerHTML = `<div class="error">Failed to load content. Please try again later.</div>`;
-    } finally {
-        hideLoading(); // Ensure the loading overlay is hidden
-    }
-}
 
 
 
 // Navigation Setup
-function setupNavigation() {
-    const links = [
-        { id: 'home-link', action: fetchHomeContent },
-        { id: 'characters-link', action: fetchCharactersGallery },
-        { id: 'comics-link', action: fetchComicsGallery },
-    ];
-
-    links.forEach(link => {
-        const element = document.getElementById(link.id);
-        if (element) {
-            element.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default link behavior
-                link.action(); // Load the corresponding page content
-            });
-        }
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('home-link').addEventListener('click', fetchHomeContent);
+    document.getElementById('characters-link').addEventListener('click', fetchCharactersGallery);
+    document.getElementById('comics-link').addEventListener('click', fetchComicsGallery);
+    fetchHomeContent(); // Load the home content by default
+});
 
 // DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', () => {

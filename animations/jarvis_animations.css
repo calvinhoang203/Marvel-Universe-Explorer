@@ -1,0 +1,136 @@
+/* Jarvis Loading Animation */
+#overlay {
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999; /* Ensure it overlays other elements */
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+}
+
+.container {
+    width: 200px; /* Reduced width for the animation */
+    height: 200px; /* Reduced height for the animation */
+    position: relative;
+}
+
+.circle {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; /* Center within container */
+    left: 50%; /* Center within container */
+    transform: translate(-50%, -50%);
+}
+
+/* Background circle */
+.bg {
+    width: 200px;
+    height: 200px;
+    background: #000;
+    border: solid 3px #0088ff; /* Adjusted border thickness */
+}
+
+/* Outermost spinning circle */
+.outermost {
+    width: 170px;
+    height: 170px;
+    border: solid 7px transparent;
+    border-bottom: solid 7px #0088ff;
+    border-left: solid 7px #0088ff;
+    animation: spin 5s linear infinite;
+}
+
+/* Static outer circle */
+.outer {
+    width: 165px;
+    height: 165px;
+    border: solid 3px #0088ff;
+}
+
+/* Middle spinning circle */
+.middle {
+    width: 140px;
+    height: 140px;
+    border: solid 7px transparent;
+    border-bottom: solid 7px #005aa8;
+    animation: spin2 3.5s linear infinite reverse;
+}
+
+.middle2 {
+    width: 140px;
+    height: 140px;
+    border: solid 4px transparent;
+    border-top: solid 4px #005aa8;
+    border-right: solid 4px #005aa8;
+    animation: spin 3.5s linear infinite reverse;
+}
+
+.middle3 {
+    width: 130px;
+    height: 130px;
+    border: solid 20px transparent;
+    border-top: solid 20px rgba(0, 136, 255, 0.3);
+    border-right: solid 20px rgba(0, 136, 255, 0.3);
+    animation: spin 3.5s linear infinite reverse;
+}
+
+/* Inner circles */
+.inner {
+    width: 90px;
+    height: 90px;
+    border: solid 3px #0088ff;
+    border-bottom: solid 3px transparent;
+    animation: spin2 2s linear infinite;
+}
+
+.innermost3 {
+    width: 25px;
+    height: 25px;
+    background: #0088ff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.innermost2 {
+    width: 60px;
+    height: 60px;
+    border: solid 10px #0088ff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.innermost {
+    width: 80px;
+    height: 80px;
+    border: solid 10px #0088ff;
+    border-top: solid 10px transparent;
+    border-bottom: solid 10px transparent;
+    animation: spin 1s linear infinite reverse;
+}
+
+/* Keyframes for spinning animations */
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin2 {
+    0% {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(405deg);
+    }
+}
