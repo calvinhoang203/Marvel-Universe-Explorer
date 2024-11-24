@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Universe Explorer</title>
+    
+    <!-- This sets the favicon for the browser tab -->
     <link rel="icon" href="/images/marvel.svg">
+    
+    <!-- This links the stylesheets for the app's design and layout -->
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/characters/characters_style.css">
     <link rel="stylesheet" href="/comics/comics_style.css">
     <link rel="stylesheet" href="/home/home_style.css">
     <link rel="stylesheet" href="/animations/jarvis_animations.css">
+    
+    <!-- This imports the external script for cryptographic operations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
+    <!-- This is the main JavaScript file that handles API functionality -->
     <script src="/main_script.js" type="module" defer></script>
 </head>
 <body>
+    <!-- This is the header containing the logo and navigation links -->
     <header>
         <div class="header-logo">
             <img src="/images/Marvel_logo.png" alt="Marvel Logo">
         </div>
         <nav>
+            <!-- These links let users navigate between sections -->
             <a href="#" id="home-link">Home</a>
             <a href="#" id="characters-link">Marvel Characters Gallery</a>
-            <a href="#" id="comics-link">Marvel Comics</a>
+            <a href="#" id="comics-link">Marvel Comics Gallery</a>
         </nav>
     </header>
     
+    <!-- This creates a loading overlay with animated visual effects -->
     <div id="overlay">
         <div class="container">
+            <!-- This generates animated circles for a loading effect -->
             <div class="bg circle"></div>
             <div class="outermost circle"></div>
             <div class="outer circle"></div>
@@ -40,8 +52,7 @@
         </div>
     </div>
 
-    <main id="content">
-        <!-- Content dynamically loaded by JavaScript -->
-    </main>
+    <!-- This is where the app dynamically loads the main content -->
+    <main id="content"></main>
 </body>
 </html>

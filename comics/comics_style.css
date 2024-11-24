@@ -1,4 +1,5 @@
-/* Comics Gallery */
+/* Comics Gallery styles */
+/* This styles the gallery layout for comics, including item appearance and hover effects */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -18,7 +19,7 @@
 }
 
 .gallery-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Adds a zoom-in effect on hover */
 }
 
 .gallery-item img {
@@ -41,12 +42,7 @@
     line-height: 1.6;
 }
 
-.gallery-item ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
+/* Styles for the creators' section within each gallery item */
 .gallery-item .creators {
     font-size: 0.9rem;
     color: #b3b3b3;
@@ -59,7 +55,7 @@
     font-style: italic;
 }
 
-/* Note Styling */
+/* This styles the note displayed above the gallery */
 .note {
     background-color: #111;
     color: #fff;

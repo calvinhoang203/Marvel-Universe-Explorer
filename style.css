@@ -1,34 +1,35 @@
-/* Reset default styles to avoid unwanted spacing */
+/* Main styles */
+/* This section resets default styles for consistent appearance */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Header Styling */
+/* This section styles the header with a black background and white text */
 header {
     background-color: black;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px; /* Adjust height if needed */
+    height: 80px;
     width: 100%;
     position: relative;
-    z-index: 1000; /* Ensures it stays on top */
-    padding: 0 20px; /* Add horizontal padding for spacing */
+    z-index: 1000;
+    padding: 0 20px;
 }
 
-/* Logo Styling */
+/* This section styles the logo to fit well within the header */
 header img {
-    height: 60px; /* Adjust height as per the header dimensions */
-    max-height: 100%; /* Prevents overflow */
+    height: 60px;
+    max-height: 100%;
 }
 
-/* Navigation Styling */
+/* This section styles the navigation menu for better readability and interaction */
 nav {
     display: flex;
-    gap: 20px; /* Spacing between navigation links */
+    gap: 20px;
 }
 
 nav a {
@@ -37,81 +38,74 @@ nav a {
     color: white;
     font-weight: bold;
     font-size: 20px;
-    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover */
+    transition: color 0.3s ease, background-color 0.3s ease;
     padding: 10px 15px;
 }
 
 nav a:hover {
-    background-color: #ff0000; /* Highlight effect */
+    background-color: #ff0000;
     color: white;
-    border-radius: 5px; /* Rounded corners on hover */
+    border-radius: 5px;
 }
 
+/* This section styles the topbar with a slightly darker shade */
 .topbar {
-    background-color: #111; /* Slightly darker shade for the top bar */
+    background-color: #111;
     padding: 5px 0;
 }
 
-/* Main Content */
-
+/* This section sets up the main content area with a background image and text styles */
 main {
     padding: 20px;
     font-family: Arial, sans-serif;
-    background-image: url('/images/Marvel-background.jpg'); /* Ensure this path is correct */
-    background-size: cover !important; /* Ensures consistent sizing */
-    background-position: center -10px !important; /* Locks the position to center */
-    background-repeat: no-repeat !important; /* Prevents tiling */
-    background-attachment: fixed !important; /* Keeps it fixed on scroll */
-    background-color: #000000; /* Fallback color */
+    background-image: url('/images/Marvel-background.jpg'); /* Verify the image path */
+    background-size: cover !important;
+    background-position: center -10px !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-color: #000000;
     color: #ffffff;
     min-height: 100vh;
     position: relative;
-    z-index: 1; /* Keeps the background behind all content */
+    z-index: 1;
 }
 
-/* Text inside the main content */
+/* This section ensures all text inside the main content is legible on dark backgrounds */
 h1, h2, h3, p {
-    color: #ffffff; /* Lighter color for visibility */
+    color: #ffffff;
 }
 
-
-/* Adjust text shadow for better readability over images */
+/* This section adds a shadow to headers for readability over images */
 h1, h2, h3 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Welcome Section */
+/* This section styles the welcome section with centered text */
 .welcome {
     text-align: center;
     margin: 30px 0;
 }
 
-
-/* Header Text */
+/* This section adjusts the header text size and adds a shadow for clarity */
 .welcome h1 {
     font-size: 2.5rem;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Strong shadow for readability */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     margin-bottom: 10px;
 }
 
-/* Paragraph Text */
+/* This section styles paragraph text for readability and layout */
 .welcome p {
     font-size: 1.2rem;
-    color: #ffffff; /* Slightly lighter for readability */
+    color: #ffffff;
     margin: 10px auto;
     max-width: 700px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Shadow for readability */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-
-/* Remove Bullet Points */
+/* This section removes bullet points from all unordered lists */
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
-
-
-

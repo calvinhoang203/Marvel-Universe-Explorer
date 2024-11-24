@@ -1,4 +1,5 @@
-/* Characters Gallery */
+/* Characters Gallery Styles */
+/* This section styles the gallery layout for the characters */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -7,6 +8,7 @@
     padding: 10px;
 }
 
+/* This section styles individual character cards for better interaction */
 .gallery-item {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
@@ -15,8 +17,8 @@
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none; /* Remove underline */
-    display: block; /* Make the whole card clickable */
+    text-decoration: none; /* This removes the underline from links */
+    display: block; /* This makes the whole card clickable */
 }
 
 .gallery-item:hover {
@@ -24,6 +26,7 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* This section styles the image inside each card */
 .gallery-item img {
     width: 100%;
     height: auto;
@@ -31,11 +34,17 @@
     margin-bottom: 10px;
 }
 
+/* This section styles the title for each character */
 .gallery-item h3 {
     font-size: 1.5rem;
     margin-top: 10px;
 }
 
+.gallery-item:hover h3 {
+    color: #ffcc00; /* This adds a highlight color for the title on hover */
+}
+
+/* This section styles the description inside each card */
 .gallery-item p {
     font-size: 1rem;
     margin-bottom: 10px;
@@ -43,10 +52,7 @@
     line-height: 1.6;
 }
 
-.gallery-item:hover h3 {
-    color: #ffcc00; /* Optional: Add a highlight color for title on hover */
-}
-
+/* This section styles the note displayed at the top of the gallery */
 .note {
     background-color: #111;
     color: #fff;

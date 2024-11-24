@@ -1,4 +1,5 @@
 /* Jarvis Loading Animation */
+/* This section styles the overlay background for the loading animation */
 #overlay {
     background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
     position: fixed;
@@ -6,35 +7,37 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 9999; /* Ensure it overlays other elements */
+    z-index: 9999; /* Ensures it overlays other elements */
     display: flex;
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally centers the content */
+    align-items: center; /* Vertically centers the content */
 }
 
+/* This section sets up the main container for the animation */
 .container {
-    width: 200px; /* Reduced width for the animation */
-    height: 200px; /* Reduced height for the animation */
+    width: 200px;
+    height: 200px;
     position: relative;
 }
 
+/* This section defines the general styles for circular shapes used in the animation */
 .circle {
     border-radius: 50%;
     position: absolute;
-    top: 50%; /* Center within container */
-    left: 50%; /* Center within container */
+    top: 50%; /* Centers within the container */
+    left: 50%; /* Centers within the container */
     transform: translate(-50%, -50%);
 }
 
-/* Background circle */
+/* This section styles the background circle */
 .bg {
     width: 200px;
     height: 200px;
     background: #000;
-    border: solid 3px #0088ff; /* Adjusted border thickness */
+    border: solid 3px #0088ff; /* Blue border */
 }
 
-/* Outermost spinning circle */
+/* This section creates the outermost spinning circle */
 .outermost {
     width: 170px;
     height: 170px;
@@ -44,14 +47,14 @@
     animation: spin 5s linear infinite;
 }
 
-/* Static outer circle */
+/* This section adds a static outer circle */
 .outer {
     width: 165px;
     height: 165px;
     border: solid 3px #0088ff;
 }
 
-/* Middle spinning circle */
+/* This section creates the middle spinning circle layers */
 .middle {
     width: 140px;
     height: 140px;
@@ -78,7 +81,7 @@
     animation: spin 3.5s linear infinite reverse;
 }
 
-/* Inner circles */
+/* This section styles the inner circles */
 .inner {
     width: 90px;
     height: 90px;
@@ -116,7 +119,7 @@
     animation: spin 1s linear infinite reverse;
 }
 
-/* Keyframes for spinning animations */
+/* This section defines the keyframes for spinning animations */
 @keyframes spin {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
