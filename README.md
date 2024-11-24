@@ -17,44 +17,6 @@ This section displays a gallery of Marvel characters, showcasing their images, n
 ### Marvel Comics Gallery
 This section lists a collection of Marvel comics with cover images, titles, and issue numbers. Users can click on any comic to view detailed information on the Marvel website.
 
-## Project Structure
-
-The project is organized with the following files and folders:
-
-- **`index.html`**: The main HTML file that structures the webpage.
-
-- **`style.css`**: The global CSS file that styles the page, including layout and design.
-
-- **`main_script.js`**: The shared JavaScript file responsible for API integration.
-
-- **`README.md`**: This file provides an overview and setup instructions for the project.
-
-- **Folders:**
-
-  - **`animations/`**  
-    Contains `jarvis_animations.css` which adds animations to enhance user interaction.
-
-  - **`characters/`**  
-    - `characters_script.js`: Handles character-related functionalities.  
-    - `characters_style.css`: Styles for the character gallery.
-
-  - **`comics/`**  
-    - `comics_script.js`: Handles comic-related functionalities.  
-    - `comics_style.css`: Styles for the comic gallery.
-
-  - **`home/`**: Contains `home_style.css` which styles the Home page.
-
-  - **`images/`**: Contains Marvel logos and background images for the application.
-
-## How to Run
-
-### Prerequisites
-- **Marvel API Keys:**  
-  Sign up at the [Marvel Developer Portal](https://developer.marvel.com/) and create an app to get your public and private keys.
-- **Tools:**  
-  - A code editor like Visual Studio Code (VSCode)
-  - A browser such as Chrome, Edge, or Firefox  
-  - Node.js and npm installed on your system (required for Vite)
 
 ## How to Run
 
