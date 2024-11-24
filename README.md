@@ -98,7 +98,7 @@ The project is organized with the following files and folders:
 
 ## Conclusion
 
-Thank you for exploring the Marvel Universe Explorer! While it’s a simple project, I hope it brought some excitement and fun by letting you dive into Marvel’s incredible world of heroes, villains, and creators. If it added even a little joy to your day, then it has accomplished its purpose.
+Thank you for exploring the Marvel Universe Explorer! I hope it brought some excitement and fun by letting you dive into Marvel’s incredible world of heroes, villains, and creators. If it added even a little joy to your day, then it has accomplished its purpose.
 
 At the same time, creating this website has been a rewarding experience. I’m excited about the opportunity to join Code The Dream, which will provide hands-on learning and mentorship to help me grow as a developer. The skills I gain there will allow me to build more creative and engaging projects like this one.
 
