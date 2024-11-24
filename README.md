@@ -87,9 +87,8 @@ The project is organized with the following files and folders:
 
 ## Notes
 
-- Ensure your API keys are correctly configured in `main_script.js` to fetch data from the Marvel API.
-- If deploying this project, use environment variables (e.g., `.env`) to secure your API keys and avoid exposing them in the source code.
-- Images and styles can be customized by modifying the corresponding CSS files in the `characters`, `comics`, `home`, and `animations` folders.
+- Ensure your `.env` file is not committed to version control. Add `.env` to your `.gitignore` file to secure your keys.
+- If deploying the application, make sure the `.env` file is configured in the deployment environment to securely access the API keys.
 
 ## Conclusion
 
