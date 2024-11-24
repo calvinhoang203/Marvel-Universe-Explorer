@@ -79,13 +79,19 @@ The project is organized with the following files and folders:
      VITE_PRIVATE_KEY=your-private-key
      ```
 
-3. **Install Dependencies**  
+3. **Install Vite (if needed)**  
+   - If you encounter an error related to Vite, install it as a development dependency by running:
+     ```bash
+     npm install vite --save-dev
+     ```
+
+4. **Install Dependencies**  
    - Open a terminal in the project folder and run the following command to install the required packages:
      ```bash
      npm install
      ```
 
-4. **Start the Development Server**  
+5. **Start the Development Server**  
    - Start the Vite development server by running:
      ```bash
      npm run dev
