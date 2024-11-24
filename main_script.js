@@ -16,7 +16,7 @@ function generateHash(ts) {
 
 // This function creates the authentication parameters needed for API calls
 export function generateAuthParams() {
-    const ts = new Date().getTime(); // Use the current timestamp
+    const ts = new Date().getTime();
     const hash = generateHash(ts);
     return `ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`;
 }
@@ -35,13 +35,13 @@ export function hideLoading() {
 
 // This function fetches and displays a random Marvel character
 async function fetchRandomCharacter() {
-    showLoading(); // Start by showing the loading overlay
-    const limit = 1; // Only fetch one character
-    const maxOffset = 1600; // This determines the range of available characters
+    showLoading(); 
+    const limit = 1; 
+    const maxOffset = 1600; 
     let character = null;
 
     try {
-        // Keep trying to fetch a character until one with a valid description is found
+        // This loop will keep trying to fetch a character until one with a valid description is found
         while (!character) {
             const offset = Math.floor(Math.random() * maxOffset);
             const url = `${API_BASE_URL}characters?limit=${limit}&offset=${offset}&${generateAuthParams()}`;
@@ -118,7 +118,7 @@ async function fetchRandomCharacter() {
         const content = document.getElementById("content");
         content.innerHTML = `
             <div class="error">
-                <h2>Oops, something went wrong!</h2>
+                <h2>Something went wrong!</h2>
                 <p>We couldn't load the character details. Try refreshing the page later.</p>
                 <p>Error: ${error.message}</p>
             </div>

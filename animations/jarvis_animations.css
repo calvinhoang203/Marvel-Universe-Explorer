@@ -1,16 +1,16 @@
 /* Jarvis Loading Animation */
 /* This section styles the overlay background for the loading animation */
 #overlay {
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    background: rgba(0, 0, 0, 0.8); 
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 9999; /* Ensures it overlays other elements */
+    z-index: 9999; 
     display: flex;
-    justify-content: center; /* Horizontally centers the content */
-    align-items: center; /* Vertically centers the content */
+    justify-content: center; 
+    align-items: center; 
 }
 
 /* This section sets up the main container for the animation */
@@ -24,8 +24,8 @@
 .circle {
     border-radius: 50%;
     position: absolute;
-    top: 50%; /* Centers within the container */
-    left: 50%; /* Centers within the container */
+    top: 50%; 
+    left: 50%; 
     transform: translate(-50%, -50%);
 }
 
@@ -34,7 +34,7 @@
     width: 200px;
     height: 200px;
     background: #000;
-    border: solid 3px #0088ff; /* Blue border */
+    border: solid 3px #0088ff; 
 }
 
 /* This section creates the outermost spinning circle */

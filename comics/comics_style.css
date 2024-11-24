@@ -19,7 +19,7 @@
 }
 
 .gallery-item:hover {
-    transform: scale(1.05); /* Adds a zoom-in effect on hover */
+    transform: scale(1.05);
 }
 
 .gallery-item img {

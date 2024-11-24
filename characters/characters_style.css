@@ -17,8 +17,8 @@
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none; /* This removes the underline from links */
-    display: block; /* This makes the whole card clickable */
+    text-decoration: none; 
+    display: block; 
 }
 
 .gallery-item:hover {
@@ -41,7 +41,7 @@
 }
 
 .gallery-item:hover h3 {
-    color: #ffcc00; /* This adds a highlight color for the title on hover */
+    color: #ffcc00; 
 }
 
 /* This section styles the description inside each card */
