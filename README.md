@@ -46,7 +46,7 @@ The project is organized with the following files and folders:
 
   - **`images/`**: Contains Marvel logos and background images for the application.
 
-## Setup Instructions
+## How to Run
 
 ### Prerequisites
 - **Marvel API Keys:**  
@@ -56,39 +56,50 @@ The project is organized with the following files and folders:
   - A browser such as Chrome, Edge, or Firefox  
   - Node.js and npm installed on your system (required for Vite)
 
+## How to Run
+
+### Prerequisites
+- **Marvel API Keys:**  
+  Visit the [Marvel Developer Portal](https://developer.marvel.com/) to sign up and create an app. This will give you access to your public and private keys.
+- **Tools Needed:**  
+  - A text editor like Visual Studio Code (VSCode)  
+  - A browser such as Chrome, Edge, or Firefox  
+  - Node.js and npm installed on your computer (required for Vite)
+
 ### How to Run
 
-1. **Clone or Download the Repository**
-   - Clone the repository or download it as a ZIP file and extract it to your system.
+1. **Clone or Download the Repository**  
+   - Clone the repository using Git or download it as a ZIP file. Extract the ZIP file to your computer.
 
-2. **Add API Keys**
-   - Create a file named `.env` in the root directory of the project.
-   - Add your Marvel API keys to the `.env` file as follows:
+2. **Add Your API Keys**  
+   - In the root folder of the project, create a file called `.env`.  
+   - Add your API keys to this file like this:
      ```plaintext
      VITE_PUBLIC_KEY=your-public-key
      VITE_PRIVATE_KEY=your-private-key
      ```
 
-3. **Install Dependencies**
-   - Open a terminal in the project directory and run:
+3. **Install Dependencies**  
+   - Open a terminal in the project folder and run the following command to install the required packages:
      ```bash
      npm install
      ```
 
-4. **Start the Development Server**
-   - Run the following command to start the Vite development server:
+4. **Start the Development Server**  
+   - Start the Vite development server by running:
      ```bash
      npm run dev
      ```
-   - You will see a local server URL like `http://localhost:5173`. Open this URL in your browser to view the application.
+   - This will start a local server, and you will see a URL like `http://localhost:5173`. Open that URL in your browser to access the app.
 
 5. **Explore the Marvel Universe**
-   - Browse through the Home, Marvel Characters Gallery, and Marvel Comics Gallery to explore Marvel’s content.
+   - You can now browse through the Home, Marvel Characters Gallery, and Marvel Comics Gallery to explore Marvel’s content.
+
 
 ## Notes
 
-- Ensure your `.env` file is not committed to version control. Add `.env` to your `.gitignore` file to secure your keys.
-- If deploying the application, make sure the `.env` file is configured in the deployment environment to securely access the API keys.
+- Please don’t commit your `.env` file to version control. Add `.env` to your `.gitignore` file to keep your keys secure.  
+- If you plan to deploy the app, make sure the `.env` file is set up properly in the deployment environment to access the API keys securely.
 
 ## Conclusion
 
