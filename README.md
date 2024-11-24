@@ -21,17 +21,13 @@ This section lists a collection of Marvel comics with cover images, titles, and 
 
 The project is organized with the following files and folders:
 
-- **`index.html`**  
-  The main HTML file that structures the webpage.
+- **`index.html`**: The main HTML file that structures the webpage.
 
-- **`style.css`**  
-  The global CSS file that styles the page, including layout and design.
+- **`style.css`**: The global CSS file that styles the page, including layout and design.
 
-- **`main_script.js`**  
-  The shared JavaScript file responsible for API integration.
+- **`main_script.js`**: The shared JavaScript file responsible for API integration.
 
-- **`README.md`**  
-  This file provides an overview and setup instructions for the project.
+- **`README.md`**: This file provides an overview and setup instructions for the project.
 
 - **Folders:**
 
@@ -46,11 +42,9 @@ The project is organized with the following files and folders:
     - `comics_script.js`: Handles comic-related functionalities.  
     - `comics_style.css`: Styles for the comic gallery.
 
-  - **`home/`**  
-    Contains `home_style.css` which styles the Home page.
+  - **`home/`**: Contains `home_style.css` which styles the Home page.
 
-  - **`images/`**  
-    Contains Marvel logos and background images for the application.
+  - **`images/`**: Contains Marvel logos and background images for the application.
 
 ## Setup Instructions
 
@@ -87,9 +81,10 @@ The project is organized with the following files and folders:
      ```
 
 4. **Access the Application**
-   - Open your browser and enter the following URL:
+   - Open your browser and navigate to either of the following URLs:
      ```
-     http://localhost:8000
+     http://10.0.0.213:8000
+     http://127.0.0.1:8000
      ```
 
 5. **Explore the Marvel Universe**
