@@ -27,7 +27,7 @@ export function showLoading() {
     const overlay = document.getElementById('overlay');
     if (overlay) overlay.style.display = 'flex';
 }
-
+asd
 // This function hides the loading overlay once the data is fetched
 export function hideLoading() {
     const overlay = document.getElementById('overlay');
