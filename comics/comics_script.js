@@ -26,7 +26,7 @@ export async function fetchComicsGallery() {
         }
 
         // This note tells the user what clicking on a comic will do
-        const note = `<p class="note"><strong>Note:</strong> Click on any comic to view its detailed information on the Marvel site.</p>`;
+        const note = `<p class="comics-gallery-note"><strong>Note:</strong> Click on any comic to view its detailed information on the Marvel site.</p>`;
         
         // Generate the gallery dynamically with details like title, price, and creators
         const gallery = `

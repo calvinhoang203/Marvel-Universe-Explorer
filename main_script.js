@@ -1,13 +1,14 @@
 import { fetchCharactersGallery } from './characters/characters_script.js';
 import { fetchComicsGallery } from './comics/comics_script.js';
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 // Base URL for the Marvel API
 export const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
 
-// Add your Marvel API keys here. 
-// This is where you input your public and private keys to authenticate the API requests.
-const PUBLIC_KEY = ''; // Your Marvel API public key
-const PRIVATE_KEY = ''; // Your Marvel API private key
+// Marvel API keys
+const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
+const PRIVATE_KEY = import.meta.env.VITE_PRIVATE_KEY;
 
 // This function generates the MD5 hash required for Marvel API authentication
 function generateHash(ts) {
@@ -94,7 +95,7 @@ async function fetchRandomCharacter() {
         content.innerHTML = `
             <div class="welcome">
                 <h1>Welcome to the Marvel Universe Explorer</h1>
-                <p>Discover Marvel characters and their stories. See the character of the day or explore our galleries for more!</p>
+                <p>Discover the amazing world of Marvel superheroes, comics, and creators. Explore the character of the day or browse through our galleries to find your favorite Marvel stories!</p>
             </div>
             <div class="character-of-the-day">
                 <h2>Marvel Character of the Day</h2>

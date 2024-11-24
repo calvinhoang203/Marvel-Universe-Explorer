@@ -54,7 +54,7 @@ The project is organized with the following files and folders:
 - **Tools:**  
   - A code editor like Visual Studio Code (VSCode)
   - A browser such as Chrome, Edge, or Firefox  
-  - A local server tool like `http-server`
+  - Node.js and npm installed on your system (required for Vite)
 
 ### How to Run
 
@@ -62,30 +62,25 @@ The project is organized with the following files and folders:
    - Clone the repository or download it as a ZIP file and extract it to your system.
 
 2. **Add API Keys**
-   - Open `main_script.js` in a code editor.
-   - Locate the API key variables and replace the placeholders with your keys:
-     ```javascript
-     const PUBLIC_KEY = "your-public-key";
-     const PRIVATE_KEY = "your-private-key";
+   - Create a file named `.env` in the root directory of the project.
+   - Add your Marvel API keys to the `.env` file as follows:
+     ```plaintext
+     VITE_PUBLIC_KEY=your-public-key
+     VITE_PRIVATE_KEY=your-private-key
      ```
 
-3. **Start a Local Server**
-   - Navigate to the project directory in your terminal.
-   - Run the following command:
+3. **Install Dependencies**
+   - Open a terminal in the project directory and run:
      ```bash
-     http-server -p 8000
-     ```
-   - If `http-server` is not installed, you can install it using:
-     ```bash
-     npm install -g http-server
+     npm install
      ```
 
-4. **Access the Application**
-   - Open your browser and navigate to either of the following URLs:
+4. **Start the Development Server**
+   - Run the following command to start the Vite development server:
+     ```bash
+     npm run dev
      ```
-     http://10.0.0.213:8000
-     http://127.0.0.1:8000
-     ```
+   - You will see a local server URL like `http://localhost:5173`. Open this URL in your browser to view the application.
 
 5. **Explore the Marvel Universe**
    - Browse through the Home, Marvel Characters Gallery, and Marvel Comics Gallery to explore Marvel’s content.

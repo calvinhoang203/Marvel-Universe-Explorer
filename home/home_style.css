@@ -1,31 +1,72 @@
-/* Character of The Day Card */
-/* This section centers the text and sets up the layout for the Character of the Day container */
+/* Character of The Day Card Styles */
+/* This section styles the entire Character of the Day card, including layout, text alignment, and box styling */
 .character-of-the-day {
     text-align: center;
     margin: 30px auto;
-    max-width: 400px;
+    width: 80%; 
+    max-width: 600px; 
     padding: 20px;
     border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
-/* This section defines the style for the Character of the Day title with a bold and prominent font */
-.character-of-the-day h2 {
-    font-size: 24px;
+/* This section styles the character image for consistency in size, aspect ratio, and placement */
+.character-of-the-day img {
+    width: 100%; 
+    max-width: 400px; 
+    height: auto; 
+    border-radius: 10px; 
+    object-fit: cover; 
+    margin: 20px 0 20px; 
+}
+
+/* This section styles the character name to be bold and prominent */
+.character-of-the-day h3 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
     margin-bottom: 10px;
 }
 
-/* This section adjusts the size and shape of the character image for consistency */
-.character-of-the-day img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+/* This section formats the character description for readability */
+.character-of-the-day .description {
+    font-size: 18px;
+    color: #ddd; 
+    margin: 10px 0 20px;
+    text-align: justify;
+    line-height: 1.6; 
 }
 
-/* This section formats the description text to be legible and clean */
-.character-of-the-day p {
+/* This section styles the section titles like 'Creators' and 'Comics' */
+.character-of-the-day h4 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin: 20px 0 10px;
+    text-align: center; 
+}
+
+/* This section formats the list of creators and comics */
+.character-of-the-day p, .character-of-the-day ul {
     font-size: 16px;
-    color: #555;
-    margin-top: 10px;
+    color: #ccc; 
+    margin: 0;
+    text-align: center; 
+    line-height: 1.5; 
+}
+
+/* This section styles the refresh note at the bottom of the card */
+.refresh-note p {
+    font-size: 16px;
+    color: #fff;
+    margin-top: 30px;
+    font-weight: bold;
+    text-align: center; 
 }

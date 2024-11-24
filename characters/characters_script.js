@@ -19,7 +19,7 @@ export async function fetchCharactersGallery() {
 
         // This dynamically creates a gallery of characters with clickable links
         content.innerHTML = `
-        <div class="note">
+        <div class="character-gallery-note">
             <p><strong>Note:</strong> Clicking on a character will take you to the comics where the character appears for more details</p>
         </div>
         <div class="gallery">
