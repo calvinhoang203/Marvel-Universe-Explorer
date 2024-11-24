@@ -1,7 +1,6 @@
 import { fetchCharactersGallery } from './characters/characters_script.js';
 import { fetchComicsGallery } from './comics/comics_script.js';
-// import dotenv from 'dotenv';
-// dotenv.config();
+
 
 // Base URL for the Marvel API
 export const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
